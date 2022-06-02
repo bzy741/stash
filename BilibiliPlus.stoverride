@@ -10,24 +10,6 @@ http:
     - "manga.bilibili.com"
     - "grpc.biliapi.net"
     - "api.biliapi.net"
-  url-rewrite:
-  #BiliBili_哔哩哔哩_Defaultwor
-    - ^https://app.bilibili.com/x/v2/search/defaultwords - reject
-  #BiliBili_哔哩哔哩_Material_Ad
-    - ^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report - reject
-  #BiliBili_哔哩哔哩_小卡片广告
-    - ^https://api.bilibili.com/pgc/season/player/cards - reject
-  #BiliBili_哔哩哔哩_去除搜索中的大家都在搜
-    - ^https?:\/\/api\.vc\.bilibili\.com\/search_svr\/v\d\/Search\/recommend_words - reject
-  #BiliBili_哔哩哔哩_去除动态中的话题
-    - ^https?:\/\/api\.vc\.bilibili\.com\/topic_svr\/v1\/topic_svr - reject
-  #BiliBili_哔哩哔哩_可能的一些推广(beta)
-    - ^https?:\/\/api\.bilibili\.com\/pgc\/season\/app\/related\/recommend\? - reject
-  #BiliBili_哔哩哔哩_漫画去广告
-    - ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/Flash - reject
-    - ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/ListFlash - reject
-  #BiliBili_哔哩哔哩开屏广告
-    - ^https://app.bilibili.com/x/v2/splash/show - reject
    script:
     #BiliBili_推荐去广告
     - match: ^https?:\/\/app\.bilibili\.com\/x\/v2\/feed\/index
@@ -103,6 +85,36 @@ http:
       timeout: 10
      #热搜发现
     - match: ^https://app.bilibili.com/x/v2/search/square
+      name: bilibili_plus
+      type: response
+      require-body: true
+      timeout: 10
+     #defaultwords
+    - match: ^https://app.bilibili.com/x/v2/search/defaultwords
+      name: bilibili_plus
+      type: response
+      require-body: true
+      timeout: 10
+     #materialAD
+    - match: ^https?:\/\/api\.bilibili\.com\/x\/vip\/ads\/material\/report
+      name: bilibili_plus
+      type: response
+      require-body: true
+      timeout: 10
+     #大家都在搜
+    - match: ^https?:\/\/api\.vc\.bilibili\.com\/search_svr\/v\d\/Search\/recommend_words
+      name: bilibili_plus
+      type: response
+      require-body: true
+      timeout: 10
+     #动态话题
+    - match: ^https?:\/\/api\.vc\.bilibili\.com\/topic_svr\/v1\/topic_svr
+      name: bilibili_plus
+      type: response
+      require-body: true
+      timeout: 10
+      #小卡片
+    - match: ^https://api.bilibili.com/pgc/season/player/cards
       name: bilibili_plus
       type: response
       require-body: true
