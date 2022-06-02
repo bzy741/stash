@@ -26,7 +26,7 @@ http:
   #BiliBili_哔哩哔哩_漫画去广告
     - ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/Flash - reject
     - ^https?:\/\/manga\.bilibili\.com\/twirp\/comic\.v\d\.Comic\/ListFlash - reject
-       #BiliBili_哔哩哔哩开屏广告
+  #BiliBili_哔哩哔哩开屏广告
     - ^https://app.bilibili.com/x/v2/splash/show - reject
    script:
     #BiliBili_推荐去广告
@@ -111,6 +111,3 @@ script-providers:
     bilibili_plus:
     url: https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Script/bilibili_diy.js
     interval: 43200
-
-rules:
-  - DOMAIN-SUFFIX,cm.bilibili.com,REJECT
