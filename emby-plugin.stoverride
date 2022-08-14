@@ -1,0 +1,51 @@
+name: Emby Plugin
+desc: Emby 官方客户端内调用外部播放器
+
+http:
+  mitm:
+    - 'mb3admin.com'
+    - '*.emby.wtf:0'
+    - '*.plusmedia.site:0'
+    - '*.jmsooo.com:0'
+  script:
+    - match: ^https?:\/\/mb3admin.com\/admin\/service\/registration\/validateDevice
+      name: unlock
+      type: response
+      require-body: true
+      timeout: 10
+    - match: \/Users\/\w{32}\/Items\/\d+\?
+      name: emby-plugin1
+      type: response
+      require-body: true
+      timeout: 10
+    - match: \/plugin\/scheme
+      name: emby-plugin2
+      type: response
+      require-body: true
+      timeout: 10
+    - match: (\/Videos\/\d+\/stream\/.+\?.+&filename)|(\/Videos\/\d+\/\w{32}\/Subtitles\/\d+\/.+\?.+&filename)
+      name: emby-plugin3
+      type: request
+      require-body: false
+      timeout: 10
+    - match: (\/Videos\/\d+\/stream\?.+&filename)|(\/Videos\/\d+\/\w{32}\/Subtitles\/.+&filename)
+      name: download_file_rename
+      type: response
+      require-body: false
+      timeout: 10
+script-providers:
+  unlock:
+    url: https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/unlock.js
+    interval: 86400
+  emby-plugin1:
+    url: https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/emby-plugin.js
+    interval: 86400
+  emby-plugin2:
+    url: https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/emby-plugin.js
+    interval: 86400
+  emby-plugin3:
+    url: https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/emby-plugin.js
+    interval: 86400
+  download_file_rename:
+    url: https://raw.githubusercontent.com/rartv/EmbyPublic/test/surge/download_file_rename.js
+    interval: 86400
