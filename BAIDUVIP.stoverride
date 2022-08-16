@@ -1,0 +1,17 @@
+name: baiduvip
+desc: 解锁百度倍速播放
+
+http:
+  mitm:
+    - 'pan.baidu.com'
+    
+  script:
+    - match: \/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user
+      name: bdcloud
+      type: response
+      require-body: true
+      timeout: 10
+script-providers:
+  bdcloud:
+    url: https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/bdcloud.js
+    interval: 86400
