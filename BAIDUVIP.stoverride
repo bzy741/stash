@@ -6,7 +6,7 @@ http:
     - 'pan.baidu.com'
     
   script:
-    - match: https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user
+    - match: ^https?:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user
       name: BaiduCloud
       type: response
       require-body: true
