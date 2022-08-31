@@ -6,12 +6,12 @@ http:
     - 'pan.baidu.com'
     
   script:
-    - match: \/\/pan\.baidu\.com\/rest\/\d\.\d\/membership\/user
+    - match: https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user
       name: BaiduCloud
       type: response
       require-body: true
       timeout: 10
 script-providers:
   BaiduCloud:
-    url: https://raw.githubusercontent.com/NobyDa/Script/master/Surge/JS/BaiduCloud.js
+    url: https://raw.githubusercontent.com/ddgksf2013/Cuttlefish/master/Crack/bdcloud.js
     interval: 86400
