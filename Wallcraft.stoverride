@@ -3,7 +3,7 @@ desc: Wallcraft解锁专业版
 
 http:
   mitm:
-    - '*.wallpaperscraft.com'
+    - "*.wallpaperscraft.com"
   script:
     - match: ^https?:\/\/billing-ios\.wallpaperscraft\.com\/verify_receipt\/remove_ads$
       name: WallCraftFProCrack
