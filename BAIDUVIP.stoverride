@@ -3,7 +3,7 @@ desc: 解锁百度倍速播放
 
 http:
   mitm:
-    - 'pan.baidu.com'
+    - "pan.baidu.com"
     
   script:
     - match: https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/membership\/user
