@@ -1,4 +1,4 @@
-name: baiduvip
+name: BaiduCloud
 desc: 解锁百度倍速播放
 
 http:
@@ -6,7 +6,7 @@ http:
     - "pan.baidu.com"
     
   script:
-    - match: https:\/\/pan\.baidu\.com\/rest\/\d\.\d\/membership\/user
+    - match: https:\/\/pan\.baidu\.com\/rest\/2\.0\/membership\/user
       name: bdcloud
       type: response
       require-body: true
